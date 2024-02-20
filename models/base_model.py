@@ -58,4 +58,6 @@ class BaseModel:
         for string presentation
         """
         class_name = self.__class__.__name__
-        return f"[{class_name}] ({self.id}) {self.__dict__}"
+        inst_dict = {'first_name': getattr(self, 'first_name', None)}
+        inst_dict.update(self.__dict__)
+        return f"[{class_name}] ({self.id}) {inst_dict}"
