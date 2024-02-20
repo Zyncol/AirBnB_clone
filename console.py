@@ -3,6 +3,7 @@
 the entry point of the command interprete
 """
 
+import json
 import cmd
 import shlex
 from models import storage
