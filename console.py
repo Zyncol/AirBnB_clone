@@ -127,10 +127,10 @@ class HBNBCommand(cmd.Cmd):
             print(instances)
 
     def do_update(self, arg):
-    """
-    Updates an instance based on the class name and id
-    by adding or updating attribute
-    """
+        """
+        Updates an instance based on the class name and id
+        by adding or updating attribute
+        """
         lamulo = shlex.split(arg)
         if len(lamulo) == 0:
             print("** class name missing **")
@@ -152,12 +152,12 @@ class HBNBCommand(cmd.Cmd):
                 attri_name = lamulo[2]
                 attri_value = lamulo[3]
 
-                try:
-                    attri_value = eval(attri_value)
-                except Exception:
-                    pass
-                setattr(obj, attri_name, attri_value)
-                obj.save()
+            try:
+                attri_value = eval(attri_value)
+            except Exception:
+                pass
+            setattr(obj, attri_name, attri_value)
+            obj.save()
 
 
 if __name__ == '__main__':
