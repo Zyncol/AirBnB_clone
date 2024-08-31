@@ -14,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
     """
     where it starts
     """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
     class_check = ["BaseModel"]
 
     def help_quit(self, arg):
@@ -35,6 +35,9 @@ class HBNBCommand(cmd.Cmd):
         """
         print()
         return True
+
+    def emptyline(self):
+        pass
 
     def do_create(self, arg):
         """
