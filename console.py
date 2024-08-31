@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Prints all string representation of all instances
+        Print all string representation of all instances
         based or not on the class name
         """
         lamulo = shlex.split(arg)
@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
                 for key, obj in store.items()
                 if key.split('.')[0] == lamulo[0]
             ]
-            print(instances)
+        print(instances)
 
     def do_update(self, arg):
         """
