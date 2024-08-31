@@ -7,6 +7,7 @@ and deserializes JSON file to instance
 import os
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -38,7 +39,7 @@ class FileStorage:
         ons_objcts = FileStorage.__objects
         obj_pre = {}
         for obj in ons_objcts.keys():
-            obj_pre[obj] = ons_objcts[obj].to_dict()
+            obj_pre["{}.{}".format(obj.__class__.__name__, obj.id)] = obj.to_dict()
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
             json.dump(obj_pre, file)
 
