@@ -127,38 +127,38 @@ class HBNBCommand(cmd.Cmd):
             print(instances)
 
     def do_update(self, arg):
-        """
-        Updates an instance based on the class name and id
-        by adding or updating attribute
-        """
-        lamulo = shlex.split(arg)
-        if len(lamulo) == 0:
-            print("** class name missing **")
-        elif lamulo[0] not in self.class_check:
-            print("** class doesn't exist **")
-        elif len(lamulo) < 2:
-            print("** instance id missing **")
+    """
+    Updates an instance based on the class name and id
+    by adding or updating attribute
+    """
+    lamulo = shlex.split(arg)
+    if len(lamulo) == 0:
+        print("** class name missing **")
+    elif lamulo[0] not in self.class_check:
+        print("** class doesn't exist **")
+    elif len(lamulo) < 2:
+        print("** instance id missing **")
+    else:
+        objects = storage.all()
+        key = "{}.{}".format(lamulo[0], lamulo[1])
+        if key not in objects:
+            print("** no instance found **")
+        elif len(lamulo) < 3:
+            print("** attribute name missing **")
+        elif len(lamulo) < 4:
+            print("** value missing **")
         else:
-            objects = storage.all()
-            key = "{}.{}".format(lamulo[0], lamulo[1])
-            if key not in objects:
-                print("** no instance found **")
-            elif len(lamulo) < 3:
-                print("** attribute name missing **")
-            elif len(lamulo) < 4:
-                print("** value missing **")
-            else:
-                obj = objects[key]
-                attri_name = lamulo[2]
-                attri_value = lamulo[3]
+            obj = objects[key]
+            attri_name = lamulo[2]
+            attri_value = lamulo[3]
 
             try:
                 attri_value = eval(attri_value)
             except Exception:
                 pass
             setattr(obj, attri_name, attri_value)
-
             obj.save()
+
 
 
 if __name__ == '__main__':
