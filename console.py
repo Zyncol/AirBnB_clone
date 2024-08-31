@@ -152,13 +152,12 @@ class HBNBCommand(cmd.Cmd):
                 obj = objects[key]
                 attri_name = lamulo[2]
                 attri_value = lamulo[3]
-
-            try:
-                attri_value = eval(attri_value)
-            except Exception:
-                pass
-            setattr(obj, attri_name, attri_value)
-            obj.save()
+                try:
+                    attri_value = eval(attri_value)
+                except Exception:
+                    pass
+                setattr(obj, attri_name, attri_value)
+                obj.save()
 
 
 if __name__ == '__main__':
