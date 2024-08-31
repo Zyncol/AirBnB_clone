@@ -114,9 +114,11 @@ class HBNBCommand(cmd.Cmd):
         """
         lamulo = shlex.split(arg)
         if len(lamulo) == 0:
-            print("** class name missing **")
+            store = storage.all()
+            instances = [str(obj) for obj in store.values()]
         elif lamulo[0] not in self.class_check:
             print("** class doesn't exist **")
+            return
         else:
             store = storage.all()
             instances = [
