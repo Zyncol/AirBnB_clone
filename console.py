@@ -131,6 +131,7 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on the class name and id
         by adding or updating attribute
         """
+
         lamulo = shlex.split(arg)
         if len(lamulo) == 0:
             print("** class name missing **")
